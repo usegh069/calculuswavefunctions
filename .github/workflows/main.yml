@@ -1,0 +1,49 @@
+name: GitHub Actions Demo
+run-name: ${{ github.actor }} is running GitHub Pages deployment 🚀
+on: [push]
+jobs:
+  Explore-GitHub-Actions:
+    runs-on: ubuntu-latest
+    steps:
+      - run: 
+        # Install Python
+        sudo apt-get install python3
+      - run: 
+          # Install CMake (optional, only needed for tests and building Binaryen or LLVM)
+          sudo apt-get install cmake
+      - run:
+        # Get the emsdk repo
+        git clone https://github.com/emscripten-core/emsdk.git
+      - run:
+        # Enter that directory
+        cd emsdk
+      - run:
+        # Fetch the latest version of the emsdk (not needed the first time you clone)
+        git pull
+      - run:
+        # Download and install the latest SDK tools.
+        ./emsdk install latest
+      - run:
+        # Make the "latest" SDK "active" for the current user. (writes .emscripten file)
+        ./emsdk activate latest
+      - run:
+        # Activate PATH and other environment variables in the current terminal
+        source ./emsdk_env.sh
+      - run:
+        
+      - name: Check out repository code
+        uses: actions/checkout@v4
+      - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
+      - run: echo "🖥️ The workflow is now ready to test your code on the runner."
+      - name: List files in the repository
+        run: |
+          ls ${{ github.workspace }}
+      - run: echo "🍏 This job's status is ${{ job.status }}."
+      - run: echo "
+░██╗░░░░░░░██╗░█████╗░██████╗░██╗░░██╗░██████╗
+░██║░░██╗░░██║██╔══██╗██╔══██╗██║░██╔╝██╔════╝
+░╚██╗████╗██╔╝██║░░██║██████╔╝█████═╝░╚█████╗░
+░░████╔═████║░██║░░██║██╔══██╗██╔═██╗░░╚═══██╗
+░░╚██╔╝░╚██╔╝░╚█████╔╝██║░░██║██║░╚██╗██████╔╝
+░░░╚═╝░░░╚═╝░░░╚════╝░╚═╝░░╚═╝╚═╝░░╚═╝╚═════╝░
+"
