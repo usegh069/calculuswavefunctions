@@ -31,7 +31,7 @@ jobs:
           path: ~/emsdk
           key: ${{ runner.os }}-emscripten-${{ hashFiles('emscripten-version.txt') }}
           restore-keys: |
-            ${{ runner.os }}-emscripten-
+          ${{ runner.os }}-emscripten-
       - name: Check out repository code
         uses: actions/checkout@v4
       - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
