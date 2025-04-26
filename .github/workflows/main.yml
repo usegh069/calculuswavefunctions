@@ -9,7 +9,7 @@ jobs:
       # Install Python
       - run: sudo apt-get install cmake
       # Install CMake (optional, only needed for tests and building Binaryen or LLVM)
-      - run: git clone https://github.com/emscripten-core/emsdk.git $GITHUB_WORKSPACE
+      - run: git clone https://github.com/emscripten-core/emsdk.git .
       # Get the emsdk repo
       - run: | 
           cd $GITHUB_WORKSPACE/emsdk
