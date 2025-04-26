@@ -5,6 +5,15 @@ jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
     steps:
+      
+      - name: Cache Emscripten
+        uses: actions/cache@v4
+        with:
+          path: ~/.emscripten_cache
+          key: ${{ runner.os }}-emscripten-${{ hashFiles('emscripten-version.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-emscripten-
+      
       - run: sudo apt-get install python3
       # Install Python
       - run: sudo apt-get install cmake
