@@ -20,6 +20,9 @@ jobs:
               # Activate PATH and other environment variables in the current terminal
               source ./emsdk_env.sh     
       
+      - name: Get emscripten version
+      - run: emsdk list > emscripten-version.txt
+      
       - name: Cache
         uses: actions/cache@v4.2.3
         with:
@@ -35,8 +38,10 @@ jobs:
 
       - name: Check out repository code
         uses: actions/checkout@v4
-      - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
-      - run: echo "🖥️ The workflow is now ready to test your code on the runner."
+      - name: Update runner status
+        run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
+      - name: Update workflow status
+        run: echo "🖥️ The workflow is now ready to test your code on the runner."
       - name: Update job status
         run: echo "🍏 This job's status is ${{ job.status }}."
       - name: List files in the repository
