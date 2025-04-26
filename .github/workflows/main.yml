@@ -12,7 +12,7 @@ jobs:
       - run: git clone https://github.com/emscripten-core/emsdk.git $GITHUB_WORKSPACE
       # Get the emsdk repo
       - run: | 
-          cd emsdk
+          cd $GITHUB_WORKSPACE/emsdk
           # Fetch the latest version of the emsdk (not needed the first time you clone)
           ./emsdk install latest
           # Make the "latest" SDK "active" for the current user. (writes .emscripten file)
@@ -29,7 +29,7 @@ jobs:
         uses: actions/cache@v4.2.3
         with:
           # A list of files, directories, and wildcard patterns to cache and restore
-          path: ~/emsdk
+          path: $GITHUB_WORKSPACE/emsdk
           # An explicit key for restoring and saving the cache
           key: ${{ runner.os }}-emscripten-${{ hashFiles('emscripten-version.txt') }}
           # An ordered multiline string listing the prefix-matched keys, that are used for restoring stale cache if no cache hit occurred for key. Note `cache-hit` returns false in this case.
