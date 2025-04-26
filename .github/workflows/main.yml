@@ -9,18 +9,18 @@ jobs:
       # Install Python
       - run: sudo apt-get install cmake
       # Install CMake (optional, only needed for tests and building Binaryen or LLVM)
-      - run: git clone https://github.com/emscripten-core/emsdk.git
+      - run: git clone https://github.com/emscripten-core/emsdk.git $GITHUB_WORKSPACE
       # Get the emsdk repo
       - run: | 
-              cd emsdk
-              # Fetch the latest version of the emsdk (not needed the first time you clone)
-              ./emsdk install latest
-              # Make the "latest" SDK "active" for the current user. (writes .emscripten file)
-              ./emsdk activate latest
-              # Activate PATH and other environment variables in the current terminal
-              source ./emsdk_env.sh     
-              # Get the emsdk version
-              emsdk list > emscripten-version.txt
+          cd emsdk
+          # Fetch the latest version of the emsdk (not needed the first time you clone)
+          ./emsdk install latest
+          # Make the "latest" SDK "active" for the current user. (writes .emscripten file)
+          ./emsdk activate latest
+          # Activate PATH and other environment variables in the current terminal
+          source ./emsdk_env.sh     
+          # Get the emsdk version
+          emsdk list > emscripten-version.txt $GITHUB_WORKSPACE
   Cache:
     needs: Build_emscripten
     runs-on: ubuntu-latest
