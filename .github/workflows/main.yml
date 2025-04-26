@@ -1,4 +1,4 @@
-name: GitHub Actions Demo
+name: Install & Update Emscripten
 run-name: ${{ github.actor }} is running GitHub Pages deployment 🚀
 on: [push]
 jobs:
@@ -12,8 +12,6 @@ jobs:
       - run: git clone https://github.com/emscripten-core/emsdk.git
       # Get the emsdk repo
       - run: cd emsdk
-      # Enter that directory
-      - run: git pull
       # Fetch the latest version of the emsdk (not needed the first time you clone)
       - run: ./emsdk install latest
       # Download and install the latest SDK tools.
