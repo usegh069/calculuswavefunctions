@@ -31,7 +31,7 @@ jobs:
             restore-keys: | 
                 ${{ runner.os }}-emscripten-
             # The chunk size used to split up large files during upload, in bytes
-            upload-chunk-size: true
+            upload-chunk-size: 40000000
 
       - name: Check out repository code
         uses: actions/checkout@v4
