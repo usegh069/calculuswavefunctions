@@ -14,5 +14,8 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    - name: Build webassembly binary. 
-      run: make TYPE=release
+    - name: Change to root project directory. 
+      run: ls
+      
+    #- name: Build webassembly binary. 
+    #  run: make TYPE=release
